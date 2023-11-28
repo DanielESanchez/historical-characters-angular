@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:historical-characters-angular": "node dist/historical-characters-angular/server/server.mjs"
+    "serve:ssr:historical-characters-angular": "node dist/historical-characters-angular/server/server.mjs",
+    "mock-server": "npm install -g json-server && json-server db.json"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "primeng": "^17.0.0-beta.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "uuid": "^9.0.1",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
@@ -36,7 +38,9 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "@types/uuid": "^9.0.7",
     "jasmine-core": "~5.1.0",
+    "json-server": "^0.17.4",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
