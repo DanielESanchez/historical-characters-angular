@@ -34,11 +34,11 @@ export class CharactersService {
     );
   }
 
-  async addCharacter(newCharacter: Character): Promise<Character[]> {
+  async addCharacter(newCharacter: Character): Promise<boolean> {
     newCharacter.id = genUUID();
     await lastValueFrom(
       this.httpClient.post("http://localhost:3000/characters", newCharacter)
     );
-    return this.getAllCharacters();
+    return true;
   }
 }

@@ -97,7 +97,7 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 
   showNotSavedMessage(): void {
     this.messageService.add({
-      key: "saved",
+      key: "error",
       severity: "warn",
       summary: "Saving cancelled",
       detail: "Did not fill all the fields, saving process cancelled",
