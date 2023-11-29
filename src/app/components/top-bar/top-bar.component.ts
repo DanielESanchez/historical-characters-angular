@@ -18,10 +18,14 @@ export class TopBarComponent implements OnInit {
       {
         label: "Home",
         icon: "pi pi-fw pi-home",
+        routerLink: "/", 
+        routerLinkActiveOptions: "{exact:true}" 
       },
       {
         label: "Characters list",
         icon: "pi pi-fw pi-user",
+        routerLink: "/characters",
+        routerLinkActiveOptions: {exact:true} 
       },
     ];
   }

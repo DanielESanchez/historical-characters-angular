@@ -10,29 +10,31 @@ import { lastValueFrom } from "rxjs";
 export class CharactersService {
   constructor(private httpClient: HttpClient) {}
 
-  async getAllCharacters() {
+  async getAllCharacters(): Promise<Character[]> {
     return await lastValueFrom(
-      this.httpClient.get<Character[]>("http://localhost:3000/characters")
+      this.httpClient.get<Character[]>(
+        "http://localhost:3000/characters?_sort=bornDate&_order=desc"
+      )
     );
   }
 
-  async getCharacterById(idCharacter: string) {
+  async getCharacterById(idCharacter: string): Promise<Character> {
     return await lastValueFrom(
-      this.httpClient.get<Character[]>(
+      this.httpClient.get<Character>(
         `http://localhost:3000/characters/${idCharacter}`
       )
     );
   }
 
-  async filterCharacterByName(term: string) {
+  async filterCharacterByName(term: string): Promise<Character[]> {
     return await lastValueFrom(
       this.httpClient.get<Character[]>(
-        `http://localhost:3000/characters?name_like=${term}`
+        `http://localhost:3000/characters?name_like=${term}&_sort=bornDate&_order=desc`
       )
     );
   }
 
-  async addCharacter(newCharacter: Character) {
+  async addCharacter(newCharacter: Character): Promise<Character[]> {
     newCharacter.id = genUUID();
     await lastValueFrom(
       this.httpClient.post("http://localhost:3000/characters", newCharacter)

@@ -1,0 +1,94 @@
+@if (isLoading()) {
+<div class="card">
+  <div
+    class="flex align-items-center justify-content-center"
+    style="height: 80vh;"
+  >
+    <p-progressSpinner
+      styleClass="w-10rem h-10rem"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+    >
+    </p-progressSpinner>
+  </div>
+</div>
+} @else {
+<div class="card surface-ground" style="min-height: 60vh;">
+  <p-dataView
+    #dv
+    [value]="characters"
+    [layout]="'grid'"
+    [rows]="6"
+    [paginator]="true"
+  >
+    <ng-template pTemplate="header">
+      <div class="flex">
+        <div class="col justify-content-start">
+          <p-button
+            label="Add Character"
+            [rounded]="true"
+            severity="success"
+            icon="pi pi-plus"
+            (onClick)="showSaveCharacterDialog()"
+          ></p-button>
+        </div>
+        <div class="col text-right">
+          <div class="p-inputgroup justify-content-end">
+            <input
+              id="search"
+              name="search"
+              #search
+              type="search"
+              pInputText
+              placeholder="Search..."
+              style="flex: unset; width: 300px;"
+              (keyup.enter)="filterByName(search.value)"
+              [autofocus]="false"
+            />
+            <p-button
+              icon="pi pi-search"
+              (onClick)="filterByName(search.value)"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template let-character pTemplate="gridItem">
+      <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
+        <div class="p-4 border-1 surface-border surface-card border-round">
+          <div
+            class="flex flex-wrap align-items-center justify-content-between gap-2"
+          >
+            <span class="flex align-items-center gap-2">
+              <i class="pi pi-bookmark"></i>
+              <span class="font-semibold ellipsis-grid"
+                >{{ character.position }}</span
+              >
+            </span>
+          </div>
+          <div class="flex flex-column align-items-center gap-3 py-5">
+            <img
+              class="w-9 shadow-2 border-round"
+              src="assets/images/profile.png"
+              [alt]="character.name"
+            />
+            <div class="text-2xl font-bold">{{ character.name }}</div>
+          </div>
+          <div
+            class="flex align-items-center justify-content-between"
+            style="min-height: 10rem;"
+          >
+            <span class="text-2xl text-center ellipsis-grid-desc w-full"
+              >{{ character.description }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>
+}
+
+<p-toast position="center" key="saved" (onClose)="loadCharacters()"></p-toast>
+<p-toast position="center" key="error"></p-toast>

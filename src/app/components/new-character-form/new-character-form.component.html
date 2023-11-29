@@ -1,0 +1,112 @@
+@if (characterForm) {
+<p-card>
+  <div [formGroup]="characterForm">
+    <div class="field">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+          required
+          maxlength="50"
+          style="width: 100%;"
+          autofocus
+          toUppercase
+          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!name || (name &&name.errors))}"
+        />
+        <label htmlFor="username">Name</label>
+      </span>
+      @if (submitted && (name && (!name.value || name.errors))) {
+      <small class="error"
+        >Name is required and must have at least 1 character
+      </small>
+      }
+    </div>
+    <div class="field">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="country"
+          formControlName="country"
+          required
+          maxlength="50"
+          style="width: 100%;"
+          autofocus
+          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!name || (name &&name.errors))}"
+        />
+        <label htmlFor="country">Country</label>
+      </span>
+      @if (submitted && (country && (!country.value || country.errors))) {
+      <small class="error"
+        >Country is required and must have at least 2 characters
+      </small>
+      }
+    </div>
+    <div class="field">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="position"
+          formControlName="position"
+          required
+          maxlength="100"
+          style="width: 100%;"
+          autofocus
+          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!position || (position &&position.errors))}"
+        />
+        <label htmlFor="position">Position</label>
+      </span>
+      @if (submitted && (position && (!position.value || position.errors))) {
+      <small class="error"
+        >Position is required and must have at least 2 characters
+      </small>
+      }
+    </div>
+    <div class="field">
+      <span class="p-float-label">
+        <textarea
+          id="description"
+          pInputTextarea
+          formControlName="description"
+          required
+          rows="5"
+          style="width: 100%;"
+          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!description || (description &&description.errors))}"
+        ></textarea>
+        <label htmlFor="description">Description</label>
+      </span>
+      @if (submitted && (description && (!description.value ||
+      description.errors))) {
+      <small class="error"
+        >Description is required and must have at least 2 characters
+      </small>
+      }
+    </div>
+    <div class="field">
+      <span class="p-float-label">
+        <p-calendar
+          formControlName="bornDate"
+          [showIcon]="true"
+          [style]="{'width': '100%'}"
+          inputId="born-date"
+          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!bornDate || (bornDate && bornDate.errors))}"
+        ></p-calendar>
+        <label for="born-date">
+          Born Date
+        </label>
+      </span>
+      @if (submitted && (bornDate && (!bornDate.value || bornDate.errors))) {
+      <small class="error">Born Date is required </small>
+      }
+    </div>
+  </div>
+  <div class="text-center">
+    <p-button
+      label="Save new character"
+      pRipple
+      [raised]="true"
+      (click)="save()"
+    ></p-button>
+  </div>
+</p-card>
+}
