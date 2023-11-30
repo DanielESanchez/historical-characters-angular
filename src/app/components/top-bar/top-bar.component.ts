@@ -16,7 +16,6 @@ export class TopBarComponent implements OnInit {
   items!: MenuItem[];
   icon: string = "pi pi-sun";
   isDark: boolean = false;
-  themeClassButton:string = ""
 
   constructor(private readonly themeService: ThemeService) {}
 
@@ -42,12 +41,9 @@ export class TopBarComponent implements OnInit {
     if (this.isDark) {
       this.icon = "pi pi-moon";
       this.themeService.switchTheme("dark-theme");
-      this.themeClassButton = "dark"
       return;
     }
     this.icon = "pi pi-sun";
     this.themeService.switchTheme("light-theme");
-    this.themeClassButton = ""
-
   }
 }

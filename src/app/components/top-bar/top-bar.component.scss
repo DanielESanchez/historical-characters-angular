@@ -1,11 +1,7 @@
-:host ::ng-deep .dark {
-  background: var(--primary-900) !important;
-}
-
 :host ::ng-deep.pi-moon:before {
-  color: white;
+  font-size: xx-large;
 }
 
-:host ::ng-deep.no-border {
-  border: none !important;
+:host ::ng-deep.pi-sun:before {
+  font-size: xx-large;
 }
