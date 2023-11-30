@@ -30,7 +30,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/theme-dark.scss",
+                "bundleName": "dark-theme",
+                "inject": false
+              },
+              {
+                "input": "src/theme-light.scss",
+                "bundleName": "light-theme",
+                "inject": false
+              }
             ],
             "scripts": [],
             "server": "src/main.server.ts",

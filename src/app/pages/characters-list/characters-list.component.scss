@@ -19,9 +19,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  :host ::ng-deep .p-button.p-button-success,
-  .p-buttonset.p-button-success > .p-button,
-  .p-splitbutton.p-button-success > .p-button {
+  :host ::ng-deep .p-button.p-button-rounded {
     width: 100% !important;
   }
 }

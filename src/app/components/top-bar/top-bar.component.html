@@ -1,7 +1,14 @@
 <div>
-    <p-menubar [model]="items">
-        <ng-template pTemplate="end">
-            <img src="/favicon.ico" height="40" class="mr-2" />
-        </ng-template>
-    </p-menubar>
+  <p-menubar [model]="items">
+    <ng-template pTemplate="end">
+      <p-button
+        [icon]="icon"
+        [rounded]="true"
+        class="mr-3"
+        (onClick)="changeTheme()"
+        [styleClass]="themeClassButton"
+      ></p-button>
+      <img src="/favicon.ico" height="40" class="mr-2" />
+    </ng-template>
+  </p-menubar>
 </div>

@@ -1,0 +1,11 @@
+:host ::ng-deep .dark {
+  background: var(--primary-900) !important;
+}
+
+:host ::ng-deep.pi-moon:before {
+  color: white;
+}
+
+:host ::ng-deep.no-border {
+  border: none !important;
+}
