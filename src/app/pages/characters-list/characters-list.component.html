@@ -23,8 +23,8 @@
     [paginator]="true"
   >
     <ng-template pTemplate="header">
-      <div class="flex">
-        <div class="col justify-content-start">
+      <div class="grid text-center" style="width: 100%;">
+        <div class="col-12 md:col-6 text-start">
           <p-button
             label="Add Character"
             [rounded]="true"
@@ -33,7 +33,7 @@
             (onClick)="showSaveCharacterDialog()"
           ></p-button>
         </div>
-        <div class="col text-right">
+        <div class="col-12 md:col-6">
           <div class="p-inputgroup justify-content-end">
             <input
               id="search"
@@ -42,7 +42,7 @@
               type="search"
               pInputText
               placeholder="Search..."
-              style="flex: unset; width: 300px;"
+              style="flex: unset; width: 90%;"
               (search)="filterByName(search.value)"
               (keyup.enter)="filterByName(search.value)"
               [autofocus]="false"
@@ -57,7 +57,7 @@
       </div>
     </ng-template>
     <ng-template let-character pTemplate="gridItem">
-      <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
+      <div class="col-12 sm:col-6 lg:col-6 xl:col-4 p-2">
         <div class="p-4 border-1 surface-border surface-card border-round">
           <div
             class="flex flex-wrap align-items-center justify-content-between gap-2"
