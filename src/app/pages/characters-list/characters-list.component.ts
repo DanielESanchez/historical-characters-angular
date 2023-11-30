@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit, signal } from "@angular/core";
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  signal,
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ButtonModule } from "primeng/button";
@@ -17,6 +24,9 @@ import { Character } from "../../interfaces/character";
 import { CharactersService } from "../../services/characters.service";
 import { NewCharacterFormComponent } from "../../components/new-character-form/new-character-form.component";
 import { LoadingService } from "../../services/loading.service";
+import { CountriesService } from "../../services/countries.service";
+import { Country } from "../../interfaces/country";
+import { lastValueFrom } from "rxjs";
 
 @Component({
   selector: "app-characters-list",
@@ -42,7 +52,8 @@ export class CharactersListComponent implements OnInit, OnDestroy {
     private readonly charactersService: CharactersService,
     private readonly dialogService: DialogService,
     private readonly messageService: MessageService,
-    private readonly loadingService: LoadingService
+    private readonly loadingService: LoadingService,
+    private readonly countriesService: CountriesService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -54,12 +65,17 @@ export class CharactersListComponent implements OnInit, OnDestroy {
     this.characters = await this.charactersService.getAllCharacters();
   }
 
+  async loadCountries(): Promise<Country[]> {
+    return await this.countriesService.getAllCountries();
+  }
+
   async filterByName(input: string): Promise<void> {
     if (input.length < 1) return;
     this.characters = await this.charactersService.filterCharacterByName(input);
   }
 
-  showSaveCharacterDialog(): void {
+  async showSaveCharacterDialog(): Promise<void> {
+    const countriesDataDialog = await this.loadCountries();
     const dialogCong: DynamicDialogConfig = {
       header: "Save new character",
       width: "70%",
@@ -67,6 +83,7 @@ export class CharactersListComponent implements OnInit, OnDestroy {
       contentStyle: { overflow: "auto" },
       baseZIndex: 10000,
       maximizable: true,
+      data: countriesDataDialog,
     };
 
     this.saveCharacterDialogRef = this.dialogService.open(

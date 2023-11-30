@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
 import {
   AbstractControl,
@@ -17,8 +23,11 @@ import { InputTextModule } from "primeng/inputtext";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { ButtonModule } from "primeng/button";
 import { Character } from "../../interfaces/character";
-import { DynamicDialogRef } from "primeng/dynamicdialog";
+import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { UppercaseDirective } from "../../directives/uppercase.directive";
+import { DropdownChangeEvent, DropdownModule } from "primeng/dropdown";
+import { Country } from "../../interfaces/country";
+import { CountriesService } from "../../services/countries.service";
 
 @Component({
   selector: "app-new-character-form",
@@ -34,21 +43,28 @@ import { UppercaseDirective } from "../../directives/uppercase.directive";
     InputTextareaModule,
     ButtonModule,
     UppercaseDirective,
+    DropdownModule,
   ],
   templateUrl: "./new-character-form.component.html",
   styleUrl: "./new-character-form.component.scss",
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewCharacterFormComponent implements OnInit {
   public characterForm!: FormGroup;
   public submitted: boolean = false;
+  public countries: Country[] = [];
+  public selectedCountry!: Country;
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private dynamicDialogRef: DynamicDialogRef
-  ) {}
+    private dynamicDialogRef: DynamicDialogRef,
+    private dynamicDialogConfig: DynamicDialogConfig
+  ) {
+    this.countries = this.dynamicDialogConfig.data;
+  }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.characterForm = this.formBuilder.group({
       name: new FormControl<string | null>(null, [
         Validators.required,
@@ -72,15 +88,19 @@ export class NewCharacterFormComponent implements OnInit {
 
   save(): void {
     this.submitted = true;
-    if (!this.characterForm.valid) return;
+    if (!this.characterForm.valid || !this.selectedCountry) return;
     const newCharacter: Character = {
       name: this.name?.value.toUpperCase(),
-      country: this.country?.value,
+      country: this.selectedCountry.name,
       position: this.position?.value,
       description: this.description?.value,
       bornDate: this.bornDate?.value,
     };
     this.dynamicDialogRef.close(newCharacter);
+  }
+
+  changeCountry(event: DropdownChangeEvent) {
+    this.selectedCountry = event.value;
   }
 
   get name(): AbstractControl<any, any> | null {

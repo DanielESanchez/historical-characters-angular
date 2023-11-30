@@ -12,9 +12,10 @@
           style="width: 100%;"
           autofocus
           toUppercase
+          autocomplete="name"
           [ngClass]="{'ng-invalid ng-dirty' : submitted && (!name || (name &&name.errors))}"
         />
-        <label htmlFor="username">Name</label>
+        <label for="name">Name</label>
       </span>
       @if (submitted && (name && (!name.value || name.errors))) {
       <small class="error"
@@ -23,23 +24,56 @@
       }
     </div>
     <div class="field">
-      <span class="p-float-label">
-        <input
-          pInputText
+      <div class="p-float-label">
+        <p-dropdown
           id="country"
-          formControlName="country"
-          required
-          maxlength="50"
-          style="width: 100%;"
-          autofocus
-          [ngClass]="{'ng-invalid ng-dirty' : submitted && (!name || (name &&name.errors))}"
-        />
-        <label htmlFor="country">Country</label>
-      </span>
-      @if (submitted && (country && (!country.value || country.errors))) {
-      <small class="error"
-        >Country is required and must have at least 2 characters
-      </small>
+          inputId="country"
+          [options]="countries"
+          optionLabel="name"
+          [autoDisplayFirst]="false"
+          [filter]="true"
+          [filterFields]="['name','code']"
+          [lazy]="true"
+          [showClear]="true"
+          (onChange)="changeCountry($event)"
+          [styleClass]="(submitted && !selectedCountry) ? 'ng-invalid ng-dirty' : ''"
+        >
+          <ng-template pTemplate="selectedItem">
+            @if (selectedCountry) {
+            <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+              <img
+                src="https://flagcdn.com/64x48/{{selectedCountry.code.toLocaleLowerCase()}}.png"
+                [class]="'flag flag-' + selectedCountry.code.toLowerCase()"
+                style="width: 18px;"
+              />
+              <div>{{ selectedCountry.name }}</div>
+            </div>
+            } @else {
+            <label>
+              Select a Country
+            </label>
+            }
+          </ng-template>
+          <ng-template let-country pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <img
+                src="https://flagcdn.com/24x18/{{country.code.toLocaleLowerCase()}}.png"
+                [class]="'flag flag-' + country.code.toLowerCase()"
+                style="width: 18px;"
+              />
+              <div>{{ country.name }}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+        @if (selectedCountry) {
+        <label>
+          Select a Country
+        </label>
+        }
+      </div>
+
+      @if (submitted && !selectedCountry ) {
+      <small class="error">Country is required, please select a country </small>
       }
     </div>
     <div class="field">
