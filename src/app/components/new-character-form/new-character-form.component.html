@@ -40,7 +40,7 @@
         >
           <ng-template pTemplate="selectedItem">
             @if (selectedCountry) {
-            <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+            <div class="flex align-items-center gap-2">
               <img
                 src="https://flagcdn.com/64x48/{{selectedCountry.code.toLocaleLowerCase()}}.png"
                 [class]="'flag flag-' + selectedCountry.code.toLowerCase()"
