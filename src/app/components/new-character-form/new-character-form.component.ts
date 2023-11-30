@@ -110,10 +110,6 @@ export class NewCharacterFormComponent implements OnInit {
     return this.characterForm.get("position");
   }
 
-  get country(): AbstractControl<any, any> | null {
-    return this.characterForm.get("country");
-  }
-
   get bornDate(): AbstractControl<any, any> | null {
     return this.characterForm.get("bornDate");
   }

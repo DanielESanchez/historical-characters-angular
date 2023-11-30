@@ -42,7 +42,7 @@ import { Country } from "../../interfaces/country";
 })
 export class CharactersListComponent implements OnInit, OnDestroy {
   public characters!: Character[];
-  public isLoading = signal(false);
+  public isLoading = signal(true);
   private saveCharacterDialogRef!: DynamicDialogRef;
 
   constructor(
