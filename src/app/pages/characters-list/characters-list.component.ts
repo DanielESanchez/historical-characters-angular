@@ -1,6 +1,4 @@
 import {
-  AfterContentChecked,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -26,7 +24,6 @@ import { NewCharacterFormComponent } from "../../components/new-character-form/n
 import { LoadingService } from "../../services/loading.service";
 import { CountriesService } from "../../services/countries.service";
 import { Country } from "../../interfaces/country";
-import { lastValueFrom } from "rxjs";
 
 @Component({
   selector: "app-characters-list",

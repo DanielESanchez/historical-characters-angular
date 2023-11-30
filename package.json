@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:historical-characters-angular": "node dist/historical-characters-angular/server/server.mjs",
-    "mock-server": "npm install -g json-server && json-server db.json"
+    "mock-server": "npm install -g json-server && json-server db.json --port 3159"
   },
   "private": true,
   "dependencies": {

@@ -48,7 +48,6 @@ import { CountriesService } from "../../services/countries.service";
   templateUrl: "./new-character-form.component.html",
   styleUrl: "./new-character-form.component.scss",
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewCharacterFormComponent implements OnInit {
   public characterForm!: FormGroup;
@@ -69,10 +68,6 @@ export class NewCharacterFormComponent implements OnInit {
       name: new FormControl<string | null>(null, [
         Validators.required,
         Validators.minLength(1),
-      ]),
-      country: new FormControl<string | null>(null, [
-        Validators.required,
-        Validators.minLength(2),
       ]),
       description: new FormControl<string | null>(null, [
         Validators.required,

@@ -43,8 +43,10 @@
               pInputText
               placeholder="Search..."
               style="flex: unset; width: 300px;"
+              (search)="filterByName(search.value)"
               (keyup.enter)="filterByName(search.value)"
               [autofocus]="false"
+              class="mr-1"
             />
             <p-button
               icon="pi pi-search"
@@ -74,6 +76,9 @@
               [alt]="character.name"
             />
             <div class="text-2xl font-bold">{{ character.name }}</div>
+            <div>
+              {{character.country}}
+            </div>
           </div>
           <div
             class="flex align-items-center justify-content-between"
