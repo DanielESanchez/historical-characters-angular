@@ -399,6 +399,22 @@
       "country": "Vanuatu",
       "description": "Ea ad esse dolore consectetur dolore ad ut culpa nisi sint excepteur irure ullamco et. Irure ex ad laborum id ut proident ex est. Laborum quis aute ipsum aliquip laboris dolor tempor. Excepteur tempor labore occaecat amet mollit tempor aliquip veniam id dolor sit ad cupidatat sint.\r\n",
       "bornDate": "1392-07-08T06:31:08 +06:36"
+    },
+    {
+      "name": "WARRIOR TEST",
+      "country": "Panama",
+      "position": "Warrior",
+      "description": "Description test",
+      "bornDate": "2023-11-28T06:00:00.000Z",
+      "id": "8b4f5ad9-f510-43d8-9ac1-e7ef3931c8df"
+    },
+    {
+      "name": "WARRIOR SSR",
+      "country": "Albania",
+      "position": "warrior",
+      "description": "Description for warrior ssr",
+      "bornDate": "2023-11-13T06:00:00.000Z",
+      "id": "c453fe44-7978-4a36-85f5-0210cfb48ab4"
     }
   ],
   "countries": [

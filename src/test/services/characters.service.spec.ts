@@ -56,7 +56,7 @@ describe("CharactersService", () => {
     });
 
     const req = httpTestingController.expectOne(
-      "http://localhost:3000/characters?_sort=bornDate&_order=desc"
+      "http://localhost:3159/characters?_sort=bornDate&_order=desc"
     );
     expect(req.request.method).toBe("GET");
     req.flush(dummyCharacters);
@@ -71,7 +71,7 @@ describe("CharactersService", () => {
     });
 
     const req = httpTestingController.expectOne(
-      `http://localhost:3000/characters/${characterId}`
+      `http://localhost:3159/characters/${characterId}`
     );
     expect(req.request.method).toBe("GET");
     req.flush(mockChar);
@@ -87,7 +87,7 @@ describe("CharactersService", () => {
     });
 
     const req = httpTestingController.expectOne(
-      `http://localhost:3000/characters?name_like=${searchTerm}&_sort=bornDate&_order=desc`
+      `http://localhost:3159/characters?name_like=${searchTerm}&_sort=bornDate&_order=desc`
     );
     expect(req.request.method).toBe("GET");
     req.flush(dummyFilteredCharacters);
@@ -111,7 +111,7 @@ describe("CharactersService", () => {
     });
 
     const req = httpTestingController.expectOne(
-      "http://localhost:3000/characters"
+      "http://localhost:3159/characters"
     );
     expect(req.request.method).toBe("POST");
     req.flush({});
