@@ -1,1 +1,14 @@
 @import "primeng/resources/themes/lara-light-teal/theme.css";
+
+.p-dropdown.ng-invalid {
+  border-color: #e24c4c; /* red */
+  color: #e24c4c;
+}
+
+.p-dropdown.ng-invalid .p-dropdown-label {
+  color: #e24c4c;
+}
+
+.p-dropdown.ng-invalid .p-dropdown-trigger {
+  color: #e24c4c;
+}

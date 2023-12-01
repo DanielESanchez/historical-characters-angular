@@ -46,6 +46,7 @@
               style="flex: unset; width: 90%;"
               (search)="filterByName(search.value)"
               (keyup.enter)="filterByName(search.value)"
+              [value]="searchTerm ? searchTerm : null"
               [autofocus]="false"
               class="mr-1"
             />
@@ -59,7 +60,9 @@
     </ng-template>
     <ng-template let-character pTemplate="gridItem">
       <div class="col-12 sm:col-12 lg:col-6 xl:col-4 p-2">
-        <div class="p-4 border-1 surface-border surface-card border-round surface-hover">
+        <div
+          class="p-4 border-1 surface-border surface-card border-round surface-hover"
+        >
           <div
             class="flex flex-wrap align-items-center justify-content-between gap-2"
           >

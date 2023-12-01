@@ -18,9 +18,11 @@
         <label for="name">Name</label>
       </span>
       @if (submitted && (name && (!name.value || name.errors))) {
-      <small class="error"
-        >Name is required and must have at least 1 character
-      </small>
+      <p-message
+        severity="error"
+        text="Name is required and must have at least 1 character"
+        styleClass="mt-1"
+      ></p-message>
       }
     </div>
     <div class="field">
@@ -73,7 +75,11 @@
       </div>
 
       @if (submitted && !selectedCountry ) {
-      <small class="error">Country is required, please select a country </small>
+      <p-message
+        severity="error"
+        text="Country is required, please select a country"
+        styleClass="mt-1"
+      ></p-message>
       }
     </div>
     <div class="field">
@@ -91,9 +97,11 @@
         <label htmlFor="position">Position</label>
       </span>
       @if (submitted && (position && (!position.value || position.errors))) {
-      <small class="error"
-        >Position is required and must have at least 2 characters
-      </small>
+      <p-message
+        severity="error"
+        text="Position is required and must have at least 2 characters"
+        styleClass="mt-1"
+      ></p-message>
       }
     </div>
     <div class="field">
@@ -111,9 +119,11 @@
       </span>
       @if (submitted && (description && (!description.value ||
       description.errors))) {
-      <small class="error"
-        >Description is required and must have at least 2 characters
-      </small>
+      <p-message
+        severity="error"
+        text="Description is required and must have at least 2 characters"
+        styleClass="mt-1"
+      ></p-message>
       }
     </div>
     <div class="field">
@@ -130,7 +140,11 @@
         </label>
       </span>
       @if (submitted && (bornDate && (!bornDate.value || bornDate.errors))) {
-      <small class="error">Born Date is required </small>
+      <p-message
+        severity="error"
+        text="Born Date is required"
+        styleClass="mt-1"
+      ></p-message>
       }
     </div>
   </div>

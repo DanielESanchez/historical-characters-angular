@@ -27,7 +27,7 @@ import { DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { UppercaseDirective } from "../../directives/uppercase.directive";
 import { DropdownChangeEvent, DropdownModule } from "primeng/dropdown";
 import { Country } from "../../interfaces/country";
-import { CountriesService } from "../../services/countries.service";
+import { MessageModule } from "primeng/message";
 
 @Component({
   selector: "app-new-character-form",
@@ -44,6 +44,7 @@ import { CountriesService } from "../../services/countries.service";
     ButtonModule,
     UppercaseDirective,
     DropdownModule,
+    MessageModule,
   ],
   templateUrl: "./new-character-form.component.html",
   styleUrl: "./new-character-form.component.scss",

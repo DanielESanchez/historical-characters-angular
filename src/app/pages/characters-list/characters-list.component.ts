@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  signal,
-} from "@angular/core";
+import { Component, OnDestroy, OnInit, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ButtonModule } from "primeng/button";
@@ -44,6 +39,7 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   public characters!: Character[];
   public isLoading = signal(true);
   private saveCharacterDialogRef!: DynamicDialogRef;
+  public searchTerm?: string;
 
   constructor(
     private readonly charactersService: CharactersService,
@@ -67,7 +63,8 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   }
 
   async filterByName(input: string): Promise<void> {
-    if (input.length < 1) return;
+    if (input.length < 1) this.searchTerm = "";
+    this.searchTerm = input;
     this.characters = await this.charactersService.filterCharacterByName(input);
   }
 
