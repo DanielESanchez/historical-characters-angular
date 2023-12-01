@@ -133,6 +133,7 @@
           [showIcon]="true"
           [style]="{'width': '100%'}"
           inputId="born-date"
+          appendTo="body"
           [ngClass]="{'ng-invalid ng-dirty' : submitted && (!bornDate || (bornDate && bornDate.errors))}"
         ></p-calendar>
         <label for="born-date">
